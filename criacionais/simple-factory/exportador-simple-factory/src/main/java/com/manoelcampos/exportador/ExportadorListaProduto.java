@@ -59,6 +59,7 @@ public interface ExportadorListaProduto {
      * @return String contendo o conteúdo da lista de produtos em um formato específico
      */
     String exportar(List<Produto> produtos);
+    
 
     /**
      * Cria uma instância de uma classe
@@ -81,6 +82,7 @@ public interface ExportadorListaProduto {
         switch (extensaoArquivoExportacao){
             case "html": return new ExportadorListaProdutoHtml();
             case "md": return new ExportadorListaProdutoMarkdown();
+            case "csv": return new ExportadorListaProdutoCSV();
             default: throw new UnsupportedOperationException("Formato de arquivo não suportado: " + extensaoArquivoExportacao);
         }
     }

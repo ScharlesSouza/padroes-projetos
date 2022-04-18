@@ -67,4 +67,7 @@ public abstract class AbstractExportadorListaProduto implements ExportadorListaP
         sb.append(fecharLinha());
         return sb.toString();
     }
+
+    
+    
 }

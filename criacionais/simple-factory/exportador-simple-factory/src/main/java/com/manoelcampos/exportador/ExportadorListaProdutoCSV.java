@@ -1,7 +1,10 @@
 package com.manoelcampos.exportador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Exporta dados de uma lista de {@link Produto} para HTML.
+ * Exporta dados de uma lista de {@link Produto} para Markdown (arquivos md).
  *
  * <p>Observe que, como estamos usando o padrão Simple Factory para instanciar
  * objetos {@link ExportadorListaProduto}, as classes concretas como esta são definidas com visibilidade "package",
@@ -11,40 +14,44 @@ package com.manoelcampos.exportador;
  *
  * @author Manoel Campos da Silva Filho
  */
-class ExportadorListaProdutoHtml extends AbstractExportadorListaProduto {
+class ExportadorListaProdutoCSV extends AbstractExportadorListaProduto {
+    private static final String SEPARADOR_LN = "-";
+    private static final String SEPARADOR_COL = ",";
+
     @Override
     public String abrirTabela() {
-        return "<table>\n";
+        return "";
     }
 
     @Override
     public String fecharTabela() {
-        return "</table>\n";
+        return "\n";
     }
 
     @Override
     public String abrirLinha() {
-        return "  <tr>";
+        return "";
     }
 
     @Override
     public String fecharLinha() {
-        return "</tr>\n";
+        return "\n";
+    }
+
+    @Override
+    public String abrirColuna(String valor) {
+        return valor;
+    }
+
+    @Override
+    public String fecharColuna() {
+        return "" + SEPARADOR_COL;
     }
 
     @Override
     public String fecharLinhaTitulos() {
         return "";
     }
-
-    @Override
-    public String abrirColuna(String valor) {
-        return "<td>" + valor;
-    }
-
-    @Override
-    public String fecharColuna() {
-        return "</td>";
-    }
-
+    
+    
 }
